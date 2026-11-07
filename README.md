@@ -623,4 +623,5 @@ These are ideas, not promises of currently implemented functionality.
 
 ## License
 
-No license file is currently included in the repository. Add an explicit open-source license before distributing or accepting external contributions.
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
