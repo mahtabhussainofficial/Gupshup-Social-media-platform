@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Sign up · {{ app_name }}{% endblock %}
+{% block page %}register{% endblock %}
+{% block content %}
+<h1>Create your account</h1>
+<form id="register-form" class="stack">
+  <label for="email">Email</label>
+  <input id="email" name="email" type="email" autocomplete="email" required>
+  <label for="username">Username</label>
+  <input id="username" name="username" autocomplete="username" pattern="[A-Za-z0-9_]{3,30}" minlength="3" maxlength="30" required>
+  <small class="muted">3–30 letters, numbers or underscores. Other people see this, not your email.</small>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+  <small class="muted">At least 8 characters.</small>
+  <button type="submit">Sign up</button>
+</form>
+<p class="muted">Already registered? <a href="/login">Log in</a></p>
+{% endblock %}

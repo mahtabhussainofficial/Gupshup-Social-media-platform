@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ app_name }}{% endblock %}</title>
+  <link rel="icon" href="/static/img/default-avatar.svg">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/app.js" defer></script>
+</head>
+<body data-page="{% block page %}{% endblock %}">
+  <header class="topbar">
+    <a class="brand" href="/">{{ app_name }}</a>
+    <nav id="nav" aria-label="Main"></nav>
+  </header>
+  <main class="column">
+    <p id="notice" class="notice" role="status" hidden></p>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

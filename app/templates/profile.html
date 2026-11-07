@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ username }} · {{ app_name }}{% endblock %}
+{% block page %}profile{% endblock %}
+{% block content %}
+<section id="profile" data-username="{{ username }}"></section>
+<section id="posts" aria-live="polite"></section>
+<p id="empty" class="muted" hidden>No posts yet.</p>
+<button id="load-more" class="secondary" hidden>Load more</button>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Account · {{ app_name }}{% endblock %}
+{% block page %}account{% endblock %}
+{% block content %}
+<h1>Your account</h1>
+
+<section class="block">
+  <h2>Profile picture</h2>
+  <div class="row">
+    <img id="avatar" class="avatar large" src="/static/img/default-avatar.svg" alt="Your profile picture">
+    <form id="picture-form" class="stack">
+      <label for="picture">Choose an image (JPEG, PNG or WEBP, up to 5 MB)</label>
+      <input id="picture" name="file" type="file" accept="image/jpeg,image/png,image/webp" required>
+      <div class="row">
+        <button type="submit">Upload</button>
+        <button type="button" id="remove-picture" class="secondary">Remove picture</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="block">
+  <h2>Profile</h2>
+  <form id="profile-form" class="stack">
+    <label for="username">Username</label>
+    <input id="username" name="username" pattern="[A-Za-z0-9_]{3,30}" minlength="3" maxlength="30" required>
+    <label for="bio">Bio</label>
+    <textarea id="bio" name="bio" rows="3" maxlength="300"></textarea>
+    <p class="muted">Signed in as <span id="email"></span></p>
+    <button type="submit">Save profile</button>
+  </form>
+</section>
+
+<section class="block">
+  <h2>Change password</h2>
+  <form id="password-form" class="stack">
+    <label for="current-password">Current password</label>
+    <input id="current-password" name="current_password" type="password" autocomplete="current-password" required>
+    <label for="new-password">New password</label>
+    <input id="new-password" name="new_password" type="password" autocomplete="new-password" minlength="8" required>
+    <button type="submit">Change password</button>
+  </form>
+</section>
+{% endblock %}

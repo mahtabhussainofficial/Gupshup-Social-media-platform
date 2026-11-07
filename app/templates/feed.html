@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block page %}feed{% endblock %}
+{% block content %}
+<form id="composer" class="composer" autocomplete="off">
+  <label for="post-title">Title</label>
+  <input id="post-title" name="title" maxlength="200" required>
+  <label for="post-content">What is on your mind?</label>
+  <textarea id="post-content" name="content" rows="3" maxlength="5000" required></textarea>
+  <div class="row">
+    <label class="inline"><input type="checkbox" name="published" checked> Publish now</label>
+    <button type="submit">Post</button>
+  </div>
+</form>
+
+<div class="toolbar">
+  <input id="search" type="search" placeholder="Search posts" aria-label="Search posts">
+  <select id="sort" aria-label="Sort posts">
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+    <option value="top">Most liked</option>
+    <option value="discussed">Most discussed</option>
+  </select>
+</div>
+
+<section id="posts" aria-live="polite"></section>
+<p id="empty" class="muted" hidden>No posts match. Write the first one above.</p>
+<button id="load-more" class="secondary" hidden>Load more</button>
+{% endblock %}

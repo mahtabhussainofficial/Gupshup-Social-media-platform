@@ -1,0 +1,4 @@
+# Normalise line endings so Windows (CRLF) and Linux (LF) stop fighting in git.
+* text=auto
+# Shell scripts MUST stay LF or they fail inside Linux containers ("bad interpreter").
+*.sh text eol=lf

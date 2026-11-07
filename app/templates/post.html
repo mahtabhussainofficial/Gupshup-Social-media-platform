@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Post · {{ app_name }}{% endblock %}
+{% block page %}post{% endblock %}
+{% block content %}
+<p><a href="/">← All posts</a></p>
+<section id="post" data-post-id="{{ post_id }}" aria-live="polite"></section>
+<h2>Comments</h2>
+<form id="comment-form" class="stack" autocomplete="off">
+  <label for="comment-content">Add a comment</label>
+  <textarea id="comment-content" name="content" rows="2" maxlength="1000" required></textarea>
+  <button type="submit">Comment</button>
+</form>
+<section id="comments" aria-live="polite"></section>
+{% endblock %}

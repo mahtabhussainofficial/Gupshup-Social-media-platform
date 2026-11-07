@@ -1,0 +1,14 @@
+.git
+.github
+.vscode
+venv
+.venv
+__pycache__
+*.pyc
+.env
+.env.*
+!.env.example
+media
+tests
+.pytest_cache
+*.md

@@ -1,0 +1,47 @@
+# Local "production-like" stack: the app + its own PostgreSQL, one command:
+#     docker compose up --build
+# Then open http://localhost:8000
+#
+# Settings come from your .env file (see .env.example). Inside Docker the database host is
+# "db" (the service name below), not "localhost", so DATABASE_URL is set here explicitly.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:?Set DATABASE_PASSWORD in your .env file}
+      POSTGRES_DB: ${DATABASE_NAME:-socialdb}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME:-socialdb}
+      SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in your .env file}
+      ENVIRONMENT: production
+      APP_BASE_URL: ${APP_BASE_URL:-http://localhost:8000}
+      EMAIL_BACKEND: ${EMAIL_BACKEND:-console}
+      EMAIL_FROM: ${EMAIL_FROM:-no-reply@gupshup.local}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+    volumes:
+      - media:/data/media
+
+volumes:
+  pgdata:
+  media:

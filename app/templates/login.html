@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Log in · {{ app_name }}{% endblock %}
+{% block page %}login{% endblock %}
+{% block content %}
+<h1>Log in</h1>
+<form id="login-form" class="stack">
+  <label for="identifier">Email or username</label>
+  <input id="identifier" name="username" autocomplete="username" required>
+  <label for="password">Password</label>
+  <input id="password" name="password" type="password" autocomplete="current-password" required>
+  <button type="submit">Log in</button>
+</form>
+<p class="muted"><a href="/forgot-password">Forgot your password?</a> · No account yet? <a href="/register">Sign up</a></p>
+{% endblock %}
