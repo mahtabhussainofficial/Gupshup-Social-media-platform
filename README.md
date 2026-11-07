@@ -622,6 +622,4 @@ These are ideas, not promises of currently implemented functionality.
 ---
 
 ## License
-
-## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
